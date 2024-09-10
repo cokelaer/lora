@@ -224,7 +224,7 @@ reads. You can replace this values using --pacbio-ccs-min-passes and --pacbio-cc
 @click.option(
     "--polypolish-input-pattern",
     "polypolish_input_pattern",
-    default="*fasta.gz",
+    default="*fastq.gz",
     type=click.STRING,
     show_default=True,
     help=f"pattern to find Illumina input files",
@@ -400,7 +400,7 @@ def main(**options):
 
     # poplypolish
     cfg["polypolish"]["do"] = options.do_polypolish
-    cfg["polypolish"]["input_directory"] = options.polypolish_input_directory
+    cfg["polypolish"]["input_directory"] = os.path.abspath(options.polypolish_input_directory)
     cfg["polypolish"]["input_pattern"] = options.polypolish_input_pattern
     cfg["polypolish"]["input_readtag"] = options.polypolish_input_readtag
 
